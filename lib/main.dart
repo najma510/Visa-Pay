@@ -1,3 +1,4 @@
+import 'package:VisaPay/screens/merchant_details.dart';
 import 'package:flutter/material.dart';
 import 'package:VisaPay/screens/welcome_screen.dart';
 import 'package:VisaPay/screens/login_screen.dart';
@@ -9,6 +10,7 @@ class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         textTheme: TextTheme(
           bodyText2: TextStyle(color: Colors.black54),
@@ -19,6 +21,7 @@ class FlashChat extends StatelessWidget {
         'welcome_screen':(context)=> WelcomeScreen(),
         'login_screen':(context)=> LoginScreen(),
         'registration_screen':(context)=> RegistrationScreen(),
+        'merchant_details':(context)=> MerchantScreen(),
       },
     );
   }
