@@ -8,9 +8,6 @@ class MerchantScreen extends StatefulWidget {
 }
 
 class _MerchantScreenState extends State<MerchantScreen> {
-  bool showSpinner = false;
-  String email;
-  String password;
 
   @override
   Widget build(BuildContext context) {
