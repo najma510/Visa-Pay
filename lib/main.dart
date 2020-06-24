@@ -1,5 +1,4 @@
 import 'package:VisaPay/screens/merchant_details.dart';
-import 'package:VisaPay/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:VisaPay/screens/welcome_screen.dart';
 import 'package:VisaPay/screens/login_screen.dart';
@@ -23,7 +22,6 @@ class FlashChat extends StatelessWidget {
         'login_screen':(context)=> LoginScreen(),
         'registration_screen':(context)=> RegistrationScreen(),
         'merchant_details':(context)=> MerchantScreen(),
-        'transaction_screen':(context)=> TransactionScreen(),
       },
     );
   }
