@@ -60,7 +60,9 @@ class _MerchantScreenState extends State<MerchantScreen> {
             RoundedButton(
               title: 'Generate Shareable Payment Link',
               colour: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'share_link');
+              },
             ),
             RoundedButton(
               title: 'View Transaction History',
