@@ -66,21 +66,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 8.0,
               ),
               TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Adhaar Card'),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
                 style: TextStyle(

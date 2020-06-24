@@ -26,7 +26,10 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
+  fonts:
+    - family: Signatra
+      fonts:
+        - asset: fonts/Signatra.ttf
   assets:
   - images/
 

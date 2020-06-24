@@ -17,13 +17,11 @@ class _MerchantScreenState extends State<MerchantScreen> {
         padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
         child: ListView(
           children: [
-            Flexible(
-              child: Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('images/visa.png'),
-                ),
+            Hero(
+              tag: 'logo',
+              child: Container(
+                height: 200.0,
+                child: Image.asset('images/visa.png'),
               ),
             ),
             CircularProfileAvatar(
@@ -34,15 +32,16 @@ class _MerchantScreenState extends State<MerchantScreen> {
               radius: 80,
             ),
             Text(
-              "Anonymous",
+              "Saurabh Kumar",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey[600],
-                fontSize: 20,
+                fontSize: 30,
+                fontFamily: "Signatra"
               ),
             ),
             Text(
-              "XYZ Pvt. Lmtd",
+              "xyz@gmail.com",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey[500],
@@ -55,12 +54,16 @@ class _MerchantScreenState extends State<MerchantScreen> {
             RoundedButton(
               title: 'Generate QR Code',
               colour: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'qrcode_screen');
+              },
             ),
             RoundedButton(
               title: 'Generate Shareable Payment Link',
               colour: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'paymentlink_screen');
+              },
             ),
             RoundedButton(
               title: 'View Transaction History',
