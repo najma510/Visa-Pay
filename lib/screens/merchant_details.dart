@@ -65,7 +65,9 @@ class _MerchantScreenState extends State<MerchantScreen> {
             RoundedButton(
               title: 'View Transaction History',
               colour: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'transaction_screen');
+              },
             ),
             RoundedButton(
               title: 'View/Edit Card Details',
