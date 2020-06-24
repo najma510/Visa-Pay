@@ -17,17 +17,29 @@ class _CardScreenState extends State<CardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Credit Card View Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
+    return SafeArea(
+      child: Scaffold(
         resizeToAvoidBottomInset: true,
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
             children: <Widget>[
+              Align(
+                alignment: Alignment.topLeft,
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    size: 30.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               CreditCardWidget(
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
