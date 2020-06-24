@@ -46,12 +46,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       height: 40.0,
                     ),
                     TransactionList(
-                      name: "Hunar",
-                      amount: 750,
-                      colour: Colors.blueAccent,
-                    ),
-                    TransactionList(
-                      name: "Saurabh",
+                      name: "Saurabh Kumar",
                       amount: 500,
                       colour: Colors.lightBlueAccent,
                     ),
@@ -61,12 +56,12 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       colour: Colors.blueAccent,
                     ),
                     TransactionList(
-                      name: "Najma",
+                      name: "Najma Mehabub",
                       amount: 559,
                       colour: Colors.lightBlueAccent,
                     ),
                     TransactionList(
-                      name: "Singh",
+                      name: "Singh Singh",
                       amount: 299,
                       colour: Colors.blueAccent,
                     ),
@@ -86,7 +81,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       colour: Colors.lightBlueAccent,
                     ),
                     TransactionList(
-                      name: "Vaibhav",
+                      name: "Robin Singh",
                       amount: 1999,
                       colour: Colors.blueAccent,
                     ),
