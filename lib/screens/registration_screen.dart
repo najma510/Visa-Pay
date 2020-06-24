@@ -20,9 +20,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0,vertical: 10.0),
-          child: ListView(
-            children: [
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
               Flexible(
                 child: Hero(
                   tag: 'logo',
@@ -73,67 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   email = value;
                 },
                 decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Visa Card Number'),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Expiration Date'),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: "Card Holder's Name"),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Adhaar Card'),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Mobile Number'),
               ),
               SizedBox(
                 height: 8.0,
