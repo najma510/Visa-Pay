@@ -70,7 +70,9 @@ class _MerchantScreenState extends State<MerchantScreen> {
             RoundedButton(
               title: 'View/Edit Card Details',
               colour: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'card_details');
+              },
             ),
           ],
         ),
