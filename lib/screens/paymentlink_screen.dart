@@ -16,8 +16,8 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: <Widget>[
+        body: ListView(
+          children: [
             Align(
               alignment: Alignment.topLeft,
               child: FlatButton(
