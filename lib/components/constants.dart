@@ -7,9 +7,11 @@ const kSendButtonTextStyle = TextStyle(
 );
 
 const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter a value',
-  hintStyle: TextStyle(
-    color:Colors.grey,
+  labelText: 'EMAIL',
+  labelStyle: TextStyle(
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.bold,
+    color: Colors.grey,
   ),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(

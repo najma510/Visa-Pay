@@ -1,6 +1,9 @@
 import 'package:VisaPay/components/rounded_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+
+FirebaseUser loggedInUser;
 
 class MerchantScreen extends StatefulWidget {
   @override
@@ -8,10 +11,59 @@ class MerchantScreen extends StatefulWidget {
 }
 
 class _MerchantScreenState extends State<MerchantScreen> {
+  final messageTextController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+
+  String messageText;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: null,
+        actions: <Widget>[
+          GestureDetector(
+            child: Container(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(right:12.0),
+                  child: Text(
+                    "Log Out",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            onTap: () {
+              _auth.signOut();
+              Navigator.popAndPushNamed(context, 'login_screen');
+            },
+          ),
+        ],
+        backgroundColor: Colors.blueAccent,
+      ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 10.0),
@@ -35,10 +87,9 @@ class _MerchantScreenState extends State<MerchantScreen> {
               "Saurabh Kumar",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.grey[600],
-                fontSize: 30,
-                fontFamily: "Signatra"
-              ),
+                  color: Colors.grey[600],
+                  fontSize: 30,
+                  fontFamily: "Signatra"),
             ),
             Text(
               "xyz@gmail.com",

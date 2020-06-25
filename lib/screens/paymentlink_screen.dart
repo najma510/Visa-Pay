@@ -1,8 +1,7 @@
 import 'package:VisaPay/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
-
-import '../constants.dart';
+import 'package:VisaPay/components/constants.dart';
 
 class PaymentLinkScreen extends StatefulWidget {
   @override
@@ -58,7 +57,9 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                       child: Row(
                         children: <Widget>[
                           IconButton(
-                            icon: Icon(Icons.link),
+                            icon: Icon(
+                              Icons.link,
+                            ),
                             color: Colors.black,
                             onPressed: () {},
                           ),
@@ -68,7 +69,9 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.share),
+                            icon: Icon(
+                              Icons.share,
+                            ),
                             color: Colors.black,
                             onPressed: () => share(context, link),
                           ),
@@ -87,15 +90,18 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                       'Send as Text Message',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 27),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 27,
+                      ),
                     ),
                     SizedBox(height: 30.0),
                     TextField(
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black,),
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
                       decoration: kTextFieldDecoration.copyWith(
                           hintText: 'Recipent Mobile Number'),
                     ),
