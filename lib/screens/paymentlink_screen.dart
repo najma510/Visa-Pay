@@ -1,12 +1,14 @@
+import 'package:VisaPay/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:VisaPay/components/constants.dart';
 
 class PaymentLinkScreen extends StatefulWidget {
   @override
   _PaymentLinkScreenState createState() => _PaymentLinkScreenState();
 }
 
-String link ="https://www.google.co.in/";
+String link = "https://www.google.co.in/";
 
 class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
   @override
@@ -14,8 +16,8 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: <Widget>[
+        body: ListView(
+          children: [
             Align(
               alignment: Alignment.topLeft,
               child: FlatButton(
@@ -44,44 +46,70 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Container(
-                      height: 130.0,
-                      child: Image.asset('images/check.png'),
-                    ),
-                    SizedBox(height: 50),
-                    Text(
-                      "Hi Merchnat your link is successfully Created",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontFamily: 'signatra',
-                        fontSize: 22,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    GestureDetector(
-                      child: Card(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        color: Colors.blueAccent,
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Text(
-                            "Click Here To Share Or Copy Your Link",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                      height: 60.0,
+                      width: 400.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 5.0,
                         ),
                       ),
-                      onTap: () => share(context, link),
+                      child: Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(
+                              Icons.link,
+                            ),
+                            color: Colors.black,
+                            onPressed: () {},
+                          ),
+                          Expanded(
+                            child: Text(
+                              link,
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.share,
+                            ),
+                            color: Colors.black,
+                            onPressed: () => share(context, link),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 10.0),
                     Text(
-                      "Note: Link will expire in next 15 minutes",
-                      textAlign: TextAlign.center,
+                      'NOTE: This link expires in 10 minutes. Please ensure to clear the payment before the due time',
                       style: TextStyle(
                         color: Colors.red,
                       ),
+                    ),
+                    SizedBox(height: 80.0),
+                    Text(
+                      'Send as Text Message',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 27,
+                      ),
+                    ),
+                    SizedBox(height: 30.0),
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      decoration: kTextFieldDecoration.copyWith(
+                          hintText: 'Recipent Mobile Number'),
+                    ),
+                    SizedBox(height: 10.0),
+                    RoundedButton(
+                      title: 'Send',
+                      colour: Colors.blueAccent,
+                      onPressed: () {},
                     ),
                   ],
                 ),

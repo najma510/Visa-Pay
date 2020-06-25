@@ -1,7 +1,7 @@
-import 'package:VisaPay/components/rounded_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import '../constants.dart';
+import 'package:VisaPay/components/constants.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool showSpinner = false;
+  final _auth = FirebaseAuth.instance;
   String email;
   String password;
 
@@ -25,17 +26,30 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    height: 200.0,
-                    child: Image.asset('images/visa.png'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'VisaPay',
+                    style: TextStyle(
+                      fontSize: 60.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
                   ),
-                ),
+                  Flexible(
+                    child: Hero(
+                      tag: 'logo',
+                      child: Container(
+                        height: 80.0,
+                        child: Image.asset('images/visa.png'),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
-                height: 48.0,
+                height: 80,
               ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
@@ -46,11 +60,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   email = value;
                 },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Enter Your Email'),
+                decoration: kTextFieldDecoration.copyWith(labelText: 'Email'),
               ),
               SizedBox(
-                height: 8.0,
+                height: 20,
               ),
               TextField(
                 obscureText: true,
@@ -61,19 +74,125 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   password = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter Your Password'),
+                decoration:
+                    kTextFieldDecoration.copyWith(labelText: 'Password'),
               ),
-              SizedBox(
-                height: 24.0,
+              SizedBox(height: 5.0),
+              Container(
+                alignment: Alignment(1.0, 0.0),
+                padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                child: InkWell(
+                  child: Text(
+                    'Forgot Password',
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Montserrat',
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
               ),
-              RoundedButton(
-                title: 'Log In',
-                colour: Colors.lightBlueAccent,
-                onPressed: () {
-                  Navigator.pushNamed(context, 'merchant_details');
+              SizedBox(height: 50.0),
+              GestureDetector(
+                onTap: () async {
+                  print(1);
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user != null) {
+                      Navigator.popAndPushNamed(context, 'merchant_details');
+                    }
+                    setState(() {
+                      showSpinner = false;
+                    });
+                  } catch (e) {
+                    print(e);
+                  }
                 },
+                child: Container(
+                  height: 40.0,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20.0),
+                    shadowColor: Colors.blueAccent,
+                    color: Colors.blue,
+                    elevation: 7.0,
+                    child: Center(
+                      child: Text(
+                        'LOGIN',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
+              SizedBox(height: 30.0),
+              Container(
+                height: 40.0,
+                color: Colors.transparent,
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                      style: BorderStyle.solid,
+                      width: 1.0,
+                    ),
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.mail,
+                        size: 28.0,
+                        color: Colors.redAccent,
+                      ),
+                      SizedBox(width: 10.0),
+                      Text(
+                        'Log in with Gmail',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat',
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'New to Spotify ?',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                    ),
+                  ),
+                  SizedBox(width: 5.0),
+                  InkWell(
+                    onTap: () {
+                      Navigator.popAndPushNamed(context, 'registration_screen');
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),

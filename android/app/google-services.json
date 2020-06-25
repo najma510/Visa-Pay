@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "456495542549",
+    "firebase_url": "https://visapay-c2ce3.firebaseio.com",
+    "project_id": "visapay-c2ce3",
+    "storage_bucket": "visapay-c2ce3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456495542549:android:ff091775eca6d76a14391c",
+        "android_client_info": {
+          "package_name": "com.example.VisaPay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456495542549-1lcp8v385s13mjppl47avb2q04cqs5m8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3ieMuyYhJgpdVuMhwcvPqOhdLY396ars"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456495542549-1lcp8v385s13mjppl47avb2q04cqs5m8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
