@@ -1,12 +1,12 @@
-import 'package:VisaPay/screens/card_details.dart';
-import 'package:VisaPay/screens/merchant_details.dart';
-import 'package:VisaPay/screens/paymentlink_screen.dart';
+import 'package:VisaPay/screens/card_screen.dart';
+import 'package:VisaPay/screens/merchant_screen.dart';
+import 'package:VisaPay/screens/link_screen.dart';
 import 'package:VisaPay/screens/qrcode_screen.dart';
 import 'package:VisaPay/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:VisaPay/screens/login_screen.dart';
 import 'package:VisaPay/screens/registration_screen.dart';
-import 'package:VisaPay/screens/root.dart';
+import 'package:VisaPay/screens/root_screen.dart';
 
 void main() => runApp(FlashChat());
 
@@ -20,15 +20,15 @@ class FlashChat extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.black54),
         ),
       ),
-      initialRoute: 'root',
+      initialRoute: 'root_screen',
       routes: {
-        'root':(context)=> IntroScreen(),
+        'root_screen':(context)=> IntroScreen(),
         'login_screen':(context)=> LoginScreen(),
         'registration_screen':(context)=> RegistrationScreen(),
-        'merchant_details':(context)=> MerchantScreen(),
-        'card_details':(context)=> CardScreen(),
+        'merchant_screen':(context)=> MerchantScreen(),
+        'card_screen':(context)=> CardScreen(),
         'transaction_screen':(context)=> TransactionScreen(),
-        'paymentLink_screen':(context)=> PaymentLinkScreen(),
+        'link_screen':(context)=> PaymentLinkScreen(),
         'qrcode_screen':(context)=> QRcodeScreen(),
       },
     );
