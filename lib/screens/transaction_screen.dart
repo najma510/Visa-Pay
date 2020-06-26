@@ -10,86 +10,73 @@ class _TransactionScreenState extends State<TransactionScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: null,
+          title: Text("VisaPay"),
+          backgroundColor: Colors.blueAccent,
+        ),
+        resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
-        body: Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 30.0,
-                  color: Colors.black,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Text(
+                "Transaction History",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 35,
+                  fontFamily: "Signatra",
                 ),
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Text(
-                      "Transaction History",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 35,
-                        fontFamily: "Signatra",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40.0,
-                    ),
-                    TransactionList(
-                      name: "Saurabh Kumar",
-                      amount: 500,
-                      colour: Colors.lightBlueAccent,
-                    ),
-                    TransactionList(
-                      name: "Shouryaa",
-                      amount: 1000,
-                      colour: Colors.blueAccent,
-                    ),
-                    TransactionList(
-                      name: "Najma Mehabub",
-                      amount: 559,
-                      colour: Colors.lightBlueAccent,
-                    ),
-                    TransactionList(
-                      name: "Singh Singh",
-                      amount: 299,
-                      colour: Colors.blueAccent,
-                    ),
-                    TransactionList(
-                      name: "Mukul Tewathia",
-                      amount: 3500,
-                      colour: Colors.lightBlueAccent,
-                    ),
-                    TransactionList(
-                      name: "Neeraj Parihar",
-                      amount: 399,
-                      colour: Colors.blueAccent,
-                    ),
-                    TransactionList(
-                      name: "Nitin Chawla",
-                      amount: 77,
-                      colour: Colors.lightBlueAccent,
-                    ),
-                    TransactionList(
-                      name: "Robin Singh",
-                      amount: 1999,
-                      colour: Colors.blueAccent,
-                    ),
-                  ],
-                ),
+              SizedBox(
+                height: 40.0,
               ),
-            ),
-          ],
+              TransactionList(
+                name: "Saurabh Kumar",
+                amount: 500,
+                colour: Colors.lightBlueAccent,
+              ),
+              TransactionList(
+                name: "Shouryaa",
+                amount: 1000,
+                colour: Colors.blueAccent,
+              ),
+              TransactionList(
+                name: "Najma Mehabub",
+                amount: 559,
+                colour: Colors.lightBlueAccent,
+              ),
+              TransactionList(
+                name: "Singh Singh",
+                amount: 299,
+                colour: Colors.blueAccent,
+              ),
+              TransactionList(
+                name: "Mukul Tewathia",
+                amount: 3500,
+                colour: Colors.lightBlueAccent,
+              ),
+              TransactionList(
+                name: "Neeraj Parihar",
+                amount: 399,
+                colour: Colors.blueAccent,
+              ),
+              TransactionList(
+                name: "Nitin Chawla",
+                amount: 77,
+                colour: Colors.lightBlueAccent,
+              ),
+              TransactionList(
+                name: "Robin Singh",
+                amount: 1999,
+                colour: Colors.blueAccent,
+              ),
+            ],
+          ),
         ),
       ),
     );
