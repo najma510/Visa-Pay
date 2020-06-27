@@ -18,22 +18,27 @@ class _TransactionScreenState extends State<TransactionScreen> {
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          padding: EdgeInsets.only(left: 24, right: 24, top: 10),
+          child: ListView(
             children: <Widget>[
+              Container(
+                height: 100.0,
+                child: Image.asset('images/visa.png'),
+              ),
+              SizedBox(
+                height: 60.0,
+              ),
               Text(
                 "Transaction History",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.grey[600],
-                  fontSize: 35,
+                  fontSize: 38,
                   fontFamily: "Signatra",
                 ),
               ),
               SizedBox(
-                height: 40.0,
+                height: 35.0,
               ),
               TransactionList(
                 name: "Saurabh Kumar",
@@ -67,12 +72,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
               ),
               TransactionList(
                 name: "Nitin Chawla",
-                amount: 77,
-                colour: Colors.lightBlueAccent,
-              ),
-              TransactionList(
-                name: "Robin Singh",
-                amount: 1999,
+                amount: 1399,
                 colour: Colors.blueAccent,
               ),
             ],
@@ -111,6 +111,7 @@ class TransactionList extends StatelessWidget {
                   name,
                   style: TextStyle(
                     color: Colors.white,
+                    fontFamily: 'Montserrat',
                   ),
                 ),
               ),
@@ -130,6 +131,7 @@ class TransactionList extends StatelessWidget {
                 "\$ $amount",
                 style: TextStyle(
                   color: Colors.white,
+                  fontFamily: 'Montserrat',
                 ),
               ),
             ),

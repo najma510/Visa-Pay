@@ -40,3 +40,20 @@ AlertDialog alertDialogEroor(BuildContext context, String message) {
   );
 }
 
+AlertDialog alertDialogSuccess(BuildContext context, String message) {
+  return AlertDialog(
+    title: Text('Success !!'),
+    content: Text(
+      message,
+    ),
+    actions: <Widget>[
+      FlatButton(
+        child: Text('OK'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    ],
+  );
+}
+
