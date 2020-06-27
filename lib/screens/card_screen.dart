@@ -22,7 +22,8 @@ class _CardScreenState extends State<CardScreen> {
   String cardHolderName = '';
   String cvvCode = '';
   bool isCvvFocused = false;
-  bool notSaved = true;
+  bool notSaved = false;
+  bool isChanged = false;
 
   @override
   void initState() {
@@ -36,16 +37,21 @@ class _CardScreenState extends State<CardScreen> {
       final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
-        final DocumentSnapshot doc =
-            await firestoreUser.document(loggedInUser.email).get();
+        try {
+          final DocumentSnapshot doc =
+              await firestoreUser.document(loggedInUser.email).get();
 
-        setState(() {
-          notSaved = false;
-          cardNumber = doc.data['number'];
-          expiryDate = doc.data['expiry'];
-          cardHolderName = doc.data['name'];
-          cvvCode = doc.data['cvv'];
-        });
+          setState(() {
+            cardNumber = doc.data['number'];
+            expiryDate = doc.data['expiry'];
+            cardHolderName = doc.data['name'];
+            cvvCode = doc.data['cvv'];
+          });
+        } catch (e) {
+          setState(() {
+            notSaved = true;
+          });
+        }
       }
     } catch (e) {
       print(e);
@@ -64,85 +70,96 @@ class _CardScreenState extends State<CardScreen> {
         resizeToAvoidBottomInset: true,
         resizeToAvoidBottomPadding: true,
         backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 5,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                CreditCardWidget(
-                  cardNumber: cardNumber,
-                  expiryDate: expiryDate,
-                  cardHolderName: cardHolderName,
-                  cvvCode: cvvCode,
-                  showBackView: isCvvFocused,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: CreditCardForm(
-                      onCreditCardModelChange: onCreditCardModelChange,
-                      themeColor: Colors.blueAccent,
-                      textColor: Colors.blueAccent,
-                      cursorColor: Colors.blueAccent,
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 5,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  CreditCardWidget(
+                    cardNumber: cardNumber,
+                    expiryDate: expiryDate,
+                    cardHolderName: cardHolderName,
+                    cvvCode: cvvCode,
+                    showBackView: isCvvFocused,
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: CreditCardForm(
+                        onCreditCardModelChange: onCreditCardModelChange,
+                        themeColor: Colors.blueAccent,
+                        textColor: Colors.blueAccent,
+                        cursorColor: Colors.blueAccent,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: RoundedButton(
-                    title: 'Save Credentials',
-                    colour: Colors.blueAccent,
-                    onPressed: () {
-
-                      if (cvvCode == '' ||
-                          cardHolderName == '' ||
-                          cardNumber == '' ||
-                          expiryDate == '') {
-
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return alertDialogEroor(
-                              context,
-                              "One or more inputs are empty.",
-                            );
-                          },
-                        );
-                      } else {
-
-                        if (notSaved) {
-                          firestoreUser.document(loggedInUser.email).setData(
-                            {
-                              'number': cardNumber,
-                              'expiry': expiryDate,
-                              'cvv': cvvCode,
-                              'name': cardHolderName,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    child: RoundedButton(
+                      title: 'Save Credentials',
+                      colour: Colors.blueAccent,
+                      onPressed: () {
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                        if (cvvCode == '' ||
+                            cardHolderName == '' ||
+                            cardNumber == '' ||
+                            expiryDate == '' ||
+                            !isChanged) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return alertDialogEroor(
+                                context,
+                                "One or more inputs are empty.",
+                              );
                             },
                           );
                         } else {
-                          firestoreUser
-                              .document(loggedInUser.email)
-                              .updateData(
-                            {
-                              'number': cardNumber,
-                              'expiry': expiryDate,
-                              'cvv': cvvCode,
-                              'name': cardHolderName,
+                          if (notSaved) {
+                            firestoreUser.document(loggedInUser.email).setData(
+                              {
+                                'number': cardNumber,
+                                'expiry': expiryDate,
+                                'cvv': cvvCode,
+                                'name': cardHolderName,
+                              },
+                            );
+                          } else {
+                            firestoreUser
+                                .document(loggedInUser.email)
+                                .updateData(
+                              {
+                                'number': cardNumber,
+                                'expiry': expiryDate,
+                                'cvv': cvvCode,
+                                'name': cardHolderName,
+                              },
+                            );
+                          }
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return alertDialogSuccess(
+                                context,
+                                "Credentials successfully saved.",
+                              );
                             },
                           );
                         }
-
-                        Navigator.pop(context);
-                      }
-                    },
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -153,6 +170,7 @@ class _CardScreenState extends State<CardScreen> {
   void onCreditCardModelChange(CreditCardModel creditCardModel) {
     setState(
       () {
+        isChanged = true;
         cardNumber = creditCardModel.cardNumber;
         expiryDate = creditCardModel.expiryDate;
         cardHolderName = creditCardModel.cardHolderName;

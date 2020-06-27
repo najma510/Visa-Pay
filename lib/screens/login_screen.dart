@@ -38,200 +38,210 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        child: WillPopScope(
-          onWillPop: onBackPressed,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Flexible(
-                      child: Hero(
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: WillPopScope(
+            onWillPop: onBackPressed,
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 120,
+                left: 24,
+                right: 24,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Hero(
                         tag: 'logo',
                         child: Container(
                           height: 30.0,
                           child: Image.asset('images/visa.png'),
                         ),
                       ),
-                    ),
-                    TypewriterAnimatedTextKit(
-                      text: ['VisaPay'],
-                      speed: Duration(milliseconds: 800),
-                      repeatForever: true,
-                      textStyle: TextStyle(
-                        fontSize: 50.0,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 80,
-                ),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(labelText: 'Email'),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  decoration:
-                      kTextFieldDecoration.copyWith(labelText: 'Password'),
-                ),
-                SizedBox(height: 5.0),
-                GestureDetector(
-                  onTap: () {
-                    errorMessage("Feature currently not available.");
-                  },
-                  child: Container(
-                    alignment: Alignment(1.0, 0.0),
-                    padding: EdgeInsets.only(top: 15.0, left: 20.0),
-                    child: InkWell(
-                      child: Text(
-                        'Forgot Password',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                      TypewriterAnimatedTextKit(
+                        text: ['VisaPay'],
+                        speed: Duration(milliseconds: 800),
+                        repeatForever: true,
+                        textStyle: TextStyle(
+                          fontSize: 50.0,
                           fontFamily: 'Montserrat',
-                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ),
-                SizedBox(height: 50.0),
-                GestureDetector(
-                  onTap: () async {
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      final user = await _auth.signInWithEmailAndPassword(
-                          email: email, password: password);
-                      if (user != null) {
-                        Navigator.popAndPushNamed(context, 'merchant_screen');
-                      }
-                    } catch (e) {
-                      setState(() {
-                        showSpinner = false;
-                      });
-                      errorMessage("Something went wrong. Please try again.");
-                    }
-                  },
-                  child: Container(
-                    height: 40.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.blueAccent,
-                      color: Colors.blue,
-                      elevation: 7.0,
-                      child: Center(
+                  SizedBox(
+                    height: 80,
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration:
+                        kTextFieldDecoration.copyWith(labelText: 'Email'),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration:
+                        kTextFieldDecoration.copyWith(labelText: 'Password'),
+                  ),
+                  SizedBox(height: 5.0),
+                  GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(new FocusNode());
+                      errorMessage("Feature currently not available.");
+                    },
+                    child: Container(
+                      alignment: Alignment(1.0, 0.0),
+                      padding: EdgeInsets.only(top: 15.0, left: 20.0),
+                      child: InkWell(
                         child: Text(
-                          'LOGIN',
+                          'Forgot Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat',
+                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 30.0),
-                Container(
-                  height: 40.0,
-                  color: Colors.transparent,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        style: BorderStyle.solid,
-                        width: 1.0,
-                      ),
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        errorMessage("Feature currently not available.");
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.mail,
-                            size: 28.0,
-                            color: Colors.redAccent,
-                          ),
-                          SizedBox(width: 10.0),
-                          Text(
-                            'Log in with Gmail',
+                  SizedBox(height: 50.0),
+                  GestureDetector(
+                    onTap: () async {
+                      FocusScope.of(context).requestFocus(new FocusNode());
+                      setState(() {
+                        showSpinner = true;
+                      });
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.popAndPushNamed(context, 'merchant_screen');
+                        }
+                      } catch (e) {
+                        setState(() {
+                          showSpinner = false;
+                        });
+                        errorMessage("Something went wrong. Please try again.");
+                      }
+                    },
+                    child: Container(
+                      height: 40.0,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        shadowColor: Colors.blueAccent,
+                        color: Colors.blue,
+                        elevation: 7.0,
+                        child: Center(
+                          child: Text(
+                            'LOGIN',
                             style: TextStyle(
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Montserrat',
                             ),
-                          )
-                        ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'New to VisaPay ?',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
+                  SizedBox(height: 30.0),
+                  Container(
+                    height: 40.0,
+                    color: Colors.transparent,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                          style: BorderStyle.solid,
+                          width: 1.0,
+                        ),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
-                    ),
-                    SizedBox(width: 5.0),
-                    InkWell(
-                      onTap: () {
-                        Navigator.popAndPushNamed(
-                          context,
-                          'registration_screen',
-                        );
-                      },
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
+                      child: GestureDetector(
+                        onTap: () {
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                          errorMessage("Feature currently not available.");
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.mail,
+                              size: 28.0,
+                              color: Colors.redAccent,
+                            ),
+                            SizedBox(width: 10.0),
+                            Text(
+                              'Log in with Gmail',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Montserrat',
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                    )
-                  ],
-                )
-              ],
+                    ),
+                  ),
+                  SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'New to VisaPay ?',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                        ),
+                      ),
+                      SizedBox(width: 5.0),
+                      InkWell(
+                        onTap: () {
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                          Navigator.popAndPushNamed(
+                            context,
+                            'registration_screen',
+                          );
+                        },
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
