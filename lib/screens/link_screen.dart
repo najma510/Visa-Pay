@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:VisaPay/components/constants.dart';
+import 'package:sms/sms.dart';
 
 FirebaseUser loggedInUser;
 final _auth = FirebaseAuth.instance;
@@ -22,6 +23,7 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
   String expiryDate = '';
   String cardHolderName = '';
   String cvvCode = '';
+  String recipentNumber = '';
   bool notSaved = false;
   Color colour = Colors.grey;
 
@@ -63,6 +65,18 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
       context: context,
       builder: (BuildContext context) {
         return alertDialogEroor(context, message);
+      },
+    );
+  }
+
+  void successMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alertDialogSuccess(
+          context,
+          message,
+        );
       },
     );
   }
@@ -131,15 +145,7 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                                 link = "Success";
                                 amount = null;
                               });
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return alertDialogSuccess(
-                                    context,
-                                    "Link successfully generated.",
-                                  );
-                                },
-                              );
+                              successMessage("Link successfully generated.");
                             }
                           },
                         ),
@@ -187,7 +193,12 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                           onTap: () {
                             FocusScope.of(context)
                                 .requestFocus(new FocusNode());
-                            Navigator.pushNamed(context, 'qrcode_screen');
+
+                            if (colour == Colors.green) {
+                              Navigator.pushNamed(context, 'qrcode_screen');
+                            } else {
+                              errorMessage("Link not generated yet");
+                            }
                           },
                           child: Text(
                             'Get QR code Image',
@@ -216,6 +227,9 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                           style: TextStyle(
                             color: Colors.black,
                           ),
+                          onChanged: (value) {
+                            recipentNumber = value;
+                          },
                           decoration: kTextFieldDecoration.copyWith(
                               labelText: 'Recipent Mobile Number'),
                         ),
@@ -223,8 +237,27 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                           title: 'Send',
                           colour: Colors.blueAccent,
                           onPressed: () {
-                            FocusScope.of(context)
-                                .requestFocus(new FocusNode());
+                            if (recipentNumber.length != 10)
+                              errorMessage(
+                                  'Number not correct or link not generated yet');
+                            else {
+                              FocusScope.of(context)
+                                  .requestFocus(new FocusNode());
+                              SmsSender sender = new SmsSender();
+
+                              SmsMessage message =
+                                  new SmsMessage(recipentNumber, link);
+
+                              message.onStateChanged.listen((state) {
+                                if (state == SmsMessageState.Sent) {
+                                  successMessage("SMS is sent.");
+                                } else if (state == SmsMessageState.Delivered) {
+                                  successMessage("SMS is delivered!");
+                                }
+                              });
+
+                              sender.sendSms(message);
+                            }
                           },
                         ),
                       ],
