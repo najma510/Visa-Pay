@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:VisaPay/components/constants.dart';
-import 'package:sms/sms.dart';
 
 FirebaseUser loggedInUser;
 final _auth = FirebaseAuth.instance;
@@ -237,27 +236,8 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                           title: 'Send',
                           colour: Colors.blueAccent,
                           onPressed: () {
-                            if (recipentNumber.length != 10)
                               errorMessage(
-                                  'Number not correct or link not generated yet');
-                            else {
-                              FocusScope.of(context)
-                                  .requestFocus(new FocusNode());
-                              SmsSender sender = new SmsSender();
-
-                              SmsMessage message =
-                                  new SmsMessage(recipentNumber, link);
-
-                              message.onStateChanged.listen((state) {
-                                if (state == SmsMessageState.Sent) {
-                                  successMessage("SMS is sent.");
-                                } else if (state == SmsMessageState.Delivered) {
-                                  successMessage("SMS is delivered!");
-                                }
-                              });
-
-                              sender.sendSms(message);
-                            }
+                                  'Feature currently not available.');
                           },
                         ),
                       ],
