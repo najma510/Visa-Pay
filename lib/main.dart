@@ -12,6 +12,7 @@ import 'package:VisaPay/screens/consumer/consumer_screen.dart';
 import 'package:VisaPay/screens/consumer/locate_merchant.dart';
 import 'package:VisaPay/screens/consumer/order_history.dart';
 import 'package:VisaPay/screens/consumer/place_order.dart';
+import 'package:VisaPay/screens/consumer/payment_screen.dart';
 
 void main() => runApp(FlashChat());
 
@@ -40,6 +41,7 @@ class FlashChat extends StatelessWidget {
         'locate_merchant': (context) => LocateMerchantScreen(),
         'order_history': (context) => OrderHistoryScreen(),
         'place_order': (context) => PlaceOrderScreen(),
+        'payment_screen': (context) => PaymentScreen(),
       },
     );
   }

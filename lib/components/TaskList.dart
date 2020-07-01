@@ -31,7 +31,6 @@ class _TaskTileState extends State<TaskTile> {
           title: Text(
             widget.taskTitle,
             style: TextStyle(
-              decoration: isChecked ? TextDecoration.lineThrough : null,
               fontWeight: FontWeight.w500,
               color: Colors.black,
               fontFamily: 'Montserrat',
