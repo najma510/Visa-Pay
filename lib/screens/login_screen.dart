@@ -57,11 +57,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Hero(
-                        tag: 'logo',
-                        child: Container(
-                          height: 25.0,
-                          child: Image.asset('images/visa.png'),
+                      Flexible(
+                        child: Hero(
+                          tag: 'logo',
+                          child: Container(
+                            height: 30.0,
+                            child: Image.asset('images/visa.png'),
+                          ),
                         ),
                       ),
                       TypewriterAnimatedTextKit(
@@ -69,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         speed: Duration(milliseconds: 800),
                         repeatForever: true,
                         textStyle: TextStyle(
-                          fontSize: 45.0,
+                          fontSize: 50.0,
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
