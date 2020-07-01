@@ -1,12 +1,16 @@
 import 'package:VisaPay/screens/card_screen.dart';
-import 'package:VisaPay/screens/merchant_screen.dart';
-import 'package:VisaPay/screens/link_screen.dart';
-import 'package:VisaPay/screens/qrcode_screen.dart';
-import 'package:VisaPay/screens/transaction_screen.dart';
+import 'package:VisaPay/screens/merchant/merchant_screen.dart';
+import 'package:VisaPay/screens/merchant/link_screen.dart';
+import 'package:VisaPay/screens/merchant/qrcode_screen.dart';
+import 'package:VisaPay/screens/merchant/transaction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:VisaPay/screens/login_screen.dart';
 import 'package:VisaPay/screens/registration_screen.dart';
 import 'package:VisaPay/screens/root_screen.dart';
+import 'package:VisaPay/screens/consumer/consumer_screen.dart';
+import 'package:VisaPay/screens/consumer/locate_merchant.dart';
+import 'package:VisaPay/screens/consumer/order_history.dart';
+import 'package:VisaPay/screens/consumer/place_order.dart';
 
 void main() => runApp(FlashChat());
 
@@ -22,14 +26,18 @@ class FlashChat extends StatelessWidget {
       ),
       initialRoute: 'root_screen',
       routes: {
-        'root_screen':(context)=> IntroScreen(),
-        'login_screen':(context)=> LoginScreen(),
-        'registration_screen':(context)=> RegistrationScreen(),
-        'merchant_screen':(context)=> MerchantScreen(),
-        'card_screen':(context)=> CardScreen(),
-        'transaction_screen':(context)=> TransactionScreen(),
-        'link_screen':(context)=> PaymentLinkScreen(),
-        'qrcode_screen':(context)=> QRcodeScreen(),
+        'root_screen': (context) => IntroScreen(),
+        'login_screen': (context) => LoginScreen(),
+        'registration_screen': (context) => RegistrationScreen(),
+        'merchant_screen': (context) => MerchantScreen(),
+        'card_screen': (context) => CardScreen(),
+        'transaction_screen': (context) => TransactionScreen(),
+        'link_screen': (context) => PaymentLinkScreen(),
+        'qrcode_screen': (context) => QRcodeScreen(),
+        'consumer_screen': (context) => ConsumerScreen(),
+        'locate_merchant': (context) => LocateMerchantScreen(),
+        'order_history': (context) => OrderHistoryScreen(),
+        'place_order': (context) => PlaceOrderScreen(),
       },
     );
   }

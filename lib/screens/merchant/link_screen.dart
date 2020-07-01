@@ -236,8 +236,7 @@ class _PaymentLinkScreenState extends State<PaymentLinkScreen> {
                           title: 'Send',
                           colour: Colors.blueAccent,
                           onPressed: () {
-                              errorMessage(
-                                  'Feature currently not available.');
+                            errorMessage('Feature currently not available.');
                           },
                         ),
                       ],

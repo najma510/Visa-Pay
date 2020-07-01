@@ -55,8 +55,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Padding(
               padding: const EdgeInsets.only(
                 top: 120,
-                left: 24,
-                right: 24,
+                left: 20,
+                right: 20,
               ),
               child: ListView(
                 children: <Widget>[
