@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:VisaPay/components/alertDialog.dart';
-import 'package:VisaPay/components/rounded_button.dart';
 
 class PlaceOrderScreen extends StatefulWidget {
   @override
@@ -43,13 +41,6 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
               SizedBox(
                 height: 100,
               ),
-              // RoundedButton(
-              //   title: 'Place Order and Pay',
-              //   colour: Colors.blueAccent,
-              //   onPressed: () {
-              //     Navigator.pushNamed(context, 'card_screen');
-              //   },
-              // ),
             ],
           ),
         ),

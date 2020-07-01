@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             onWillPop: onBackPressed,
             child: Padding(
               padding: EdgeInsets.only(
-                top: 120,
+                top: 100,
                 left: 20,
                 right: 20,
               ),
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 80,
                   ),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 35.0),
                   GestureDetector(
                     onTap: () async {
                       FocusScope.of(context).requestFocus(new FocusNode());
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         elevation: 7.0,
                         child: Center(
                           child: Text(
-                            'LOGIN As Merchant',
+                            'Login As Merchant',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -171,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5.0),
+                  SizedBox(height: 15.0),
                   GestureDetector(
                     onTap: () async {
                       FocusScope.of(context).requestFocus(new FocusNode());
@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         elevation: 7.0,
                         child: Center(
                           child: Text(
-                            'LOGIN As Consumer',
+                            'Login As Consumer',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: 35.0),
                   Container(
                     height: 40.0,
                     color: Colors.transparent,

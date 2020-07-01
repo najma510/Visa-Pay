@@ -105,14 +105,14 @@ class _ConsumerScreenState extends State<ConsumerScreen> {
                     child: Image.asset('images/visa.png'),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 100,
                   ),
                   CircularProfileAvatar(
                     '',
-                    child: Image.asset('images/consumer.png'),
+                    child: Image.asset('images/pro.png'),
                     borderWidth: 5,
                     elevation: 2,
-                    radius: 100,
+                    radius: 80,
                   ),
                   Text(
                     name,
@@ -133,7 +133,7 @@ class _ConsumerScreenState extends State<ConsumerScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 5.0,
+                    height: 40.0,
                   ),
                   RoundedButton(
                     title: 'Search for Merchant',

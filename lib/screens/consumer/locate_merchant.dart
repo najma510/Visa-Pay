@@ -1,12 +1,9 @@
 import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/material.dart';
-import 'package:VisaPay/components/rounded_button.dart';
-import 'package:VisaPay/components/constants.dart';
 import 'package:VisaPay/components/alertDialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
-import 'package:flappy_search_bar/scaled_tile.dart';
 
 FirebaseUser loggedInUser;
 final _auth = FirebaseAuth.instance;
@@ -73,10 +70,11 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: new BoxDecoration(
-          image: new DecorationImage(
-        image: new AssetImage('images/map.jpeg'),
-        fit: BoxFit.cover,
-      )),
+        image: new DecorationImage(
+          image: new AssetImage('images/map.jpeg'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: true,
@@ -113,13 +111,6 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
         ),
         body: Padding(
           padding: EdgeInsets.only(left: 24, right: 24, top: 10),
-          // Container(
-          //   height: 100.0,
-          //   child: Image.asset('images/visa.png'),
-          // ),
-          // SizedBox(
-          //   height: 100.0,
-          // ),
           child: SearchBar<Post>(
             searchBarStyle: SearchBarStyle(
               backgroundColor: Colors.white,
