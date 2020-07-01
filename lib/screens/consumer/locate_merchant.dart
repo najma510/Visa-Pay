@@ -90,8 +90,16 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
             FocusScope.of(context).requestFocus(new FocusNode());
           },
           child: Padding(
-            padding: EdgeInsets.only(left: 24, right: 24, top: 10),
+            padding: EdgeInsets.only(left: 24, right: 24),
             child: SearchBar<Post>(
+              cancellationWidget: Text(
+                "Cancel",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
               searchBarStyle: SearchBarStyle(
                 backgroundColor: Colors.white,
               ),
@@ -104,6 +112,7 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
               onItemFound: (Post post, int index) {
                 return Card(
                   color: Colors.white60,
+                  elevation: 15,
                   child: ListTile(
                     leading: Icon(
                       Icons.fastfood,
@@ -114,7 +123,7 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     subtitle: Text(
