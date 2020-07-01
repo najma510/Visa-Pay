@@ -49,8 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Padding(
               padding: EdgeInsets.only(
                 top: 120,
-                left: 24,
-                right: 24,
+                left: 20,
+                right: 20,
               ),
               child: ListView(
                 children: <Widget>[
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         speed: Duration(milliseconds: 800),
                         repeatForever: true,
                         textStyle: TextStyle(
-                          fontSize: 50.0,
+                          fontSize: 40.0,
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: 80,
+                    height: 30,
                   ),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50.0),
+                  SizedBox(height: 30.0),
                   GestureDetector(
                     onTap: () async {
                       FocusScope.of(context).requestFocus(new FocusNode());
@@ -158,7 +158,47 @@ class _LoginScreenState extends State<LoginScreen> {
                         elevation: 7.0,
                         child: Center(
                           child: Text(
-                            'LOGIN',
+                            'LOGIN As Merchant',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 5.0),
+                  GestureDetector(
+                    onTap: () async {
+                      FocusScope.of(context).requestFocus(new FocusNode());
+                      setState(() {
+                        showSpinner = true;
+                      });
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.popAndPushNamed(context, 'consumer_screen');
+                        }
+                      } catch (e) {
+                        setState(() {
+                          showSpinner = false;
+                        });
+                        errorMessage("Something went wrong. Please try again.");
+                      }
+                    },
+                    child: Container(
+                      height: 40.0,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        shadowColor: Colors.blueAccent,
+                        color: Colors.blue,
+                        elevation: 7.0,
+                        child: Center(
+                          child: Text(
+                            'LOGIN As Consumer',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
