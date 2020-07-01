@@ -51,7 +51,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 colour: Colors.blueAccent,
               ),
               TransactionList(
-                name: "Najma Mehabub",
+                name: "Najma Mahabub",
                 amount: 559,
                 colour: Colors.lightBlueAccent,
               ),
