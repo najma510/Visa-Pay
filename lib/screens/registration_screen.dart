@@ -67,7 +67,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         Hero(
                           tag: 'logo',
                           child: Container(
-                            height: 30.0,
+                            height: 25.0,
                             child: Image.asset('images/visa.png'),
                           ),
                         ),
@@ -76,7 +76,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           speed: Duration(milliseconds: 800),
                           repeatForever: true,
                           textStyle: TextStyle(
-                            fontSize: 50.0,
+                            fontSize: 45.0,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
