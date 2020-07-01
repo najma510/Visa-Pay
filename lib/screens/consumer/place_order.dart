@@ -15,11 +15,6 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
     'Sandwich': false,
     'French Fries': false,
   };
-  getItems() {
-    options.forEach((key, value) {
-      return key;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +38,13 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
               SizedBox(
                 height: 100,
               ),
-              // RoundedButton(
-              //   title: 'Place Order and Pay',
-              //   colour: Colors.blueAccent,
-              //   onPressed: () {
-              //     Navigator.pushNamed(context, 'card_screen');
-              //   },
-              // ),
+              RoundedButton(
+                title: 'Place Order and Pay',
+                colour: Colors.blueAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, 'payment_screen');
+                },
+              ),
             ],
           ),
         ),
