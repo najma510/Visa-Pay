@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Hero(
                         tag: 'logo',
                         child: Container(
-                          height: 30.0,
+                          height: 25.0,
                           child: Image.asset('images/visa.png'),
                         ),
                       ),
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         speed: Duration(milliseconds: 800),
                         repeatForever: true,
                         textStyle: TextStyle(
-                          fontSize: 40.0,
+                          fontSize: 45.0,
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
