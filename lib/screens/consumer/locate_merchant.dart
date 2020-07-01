@@ -60,7 +60,7 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
   }
 
   Future<List<Post>> search(String search) async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
     return List.generate(search.length, (int index) {
       return Post("Name : $search $index", "Address: $search - $index km");
     });
@@ -71,7 +71,7 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
     return Container(
       decoration: new BoxDecoration(
         image: new DecorationImage(
-          image: new AssetImage('images/map.jpeg'),
+          image: new AssetImage('images/map.jpg'),
           fit: BoxFit.cover,
         ),
       ),
@@ -83,66 +83,54 @@ class _LocateMerchantScreenState extends State<LocateMerchantScreen> {
           title: Text(
             'VisaPay',
           ),
-          actions: <Widget>[
-            GestureDetector(
-              child: Container(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 12.0),
-                    child: Text(
-                      "Log Out",
+          backgroundColor: Colors.blueAccent,
+        ),
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Padding(
+            padding: EdgeInsets.only(left: 24, right: 24, top: 10),
+            child: SearchBar<Post>(
+              searchBarStyle: SearchBarStyle(
+                backgroundColor: Colors.white,
+              ),
+              onSearch: search,
+              icon: Icon(
+                Icons.list,
+                color: Colors.black,
+              ),
+              hintText: "Search Merchant...",
+              onItemFound: (Post post, int index) {
+                return Card(
+                  color: Colors.white60,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.fastfood,
+                      color: Colors.black,
+                    ),
+                    title: Text(
+                      post.name,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                        color: Colors.black,
+                        fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    subtitle: Text(
+                      post.address,
+                      style: TextStyle(
+                        color: Colors.black,
                         fontFamily: 'Montserrat',
                       ),
                     ),
+                    onTap: () {
+                      Navigator.pushNamed(context, 'place_order');
+                    },
                   ),
-                ),
-              ),
-              onTap: () {
-                _auth.signOut();
-                Navigator.popAndPushNamed(context, 'login_screen');
+                );
               },
             ),
-          ],
-          backgroundColor: Colors.blueAccent,
-        ),
-        body: Padding(
-          padding: EdgeInsets.only(left: 24, right: 24, top: 10),
-          child: SearchBar<Post>(
-            searchBarStyle: SearchBarStyle(
-              backgroundColor: Colors.white,
-            ),
-            onSearch: search,
-            icon: Icon(
-              Icons.list,
-              color: Colors.black,
-            ),
-            onItemFound: (Post post, int index) {
-              return ListTile(
-                leading: Icon(
-                  Icons.fastfood,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  post.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-                subtitle: Text(
-                  post.address,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, 'place_order');
-                },
-              );
-            },
           ),
         ),
       ),
