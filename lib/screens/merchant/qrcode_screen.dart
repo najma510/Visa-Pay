@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class QRcodeScreen extends StatefulWidget {
   @override
@@ -25,9 +26,15 @@ class _QRcodeScreenState extends State<QRcodeScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image.asset('images/qrcode.png'),
+                      QrImage(
+                        data:
+                            "http://localhost:8080/b8b038a41b89d0662d591bd4380261c55cde5d962344aac4d9235fe1268df96f1a2f4d3s2d",
+                        version: QrVersions.auto,
+                        size: 320,
+                        gapless: false,
+                      ),
                       SizedBox(
-                        height:5,
+                        height: 5,
                       ),
                       Text(
                         "For payment page scan above QR code",

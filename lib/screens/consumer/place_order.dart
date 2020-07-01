@@ -65,6 +65,13 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                   ),
                 ),
               ),
+              RoundedButton(
+                title: 'Place Order and Pay',
+                colour: Colors.blueAccent,
+                onPressed: () {
+                  Navigator.pushNamed(context, 'payment_screen');
+                },
+              ),
             ],
           ),
         ),
