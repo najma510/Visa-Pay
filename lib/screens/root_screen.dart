@@ -14,7 +14,7 @@ class _IntroScreenState extends State<IntroScreen> {
     FirebaseAuth.instance.currentUser().then(
       (res) {
         if (res != null) {
-          Navigator.popAndPushNamed(context, 'merchant_screen');
+          Navigator.popAndPushNamed(context, 'consumer_screen');
         } else {
           Navigator.popAndPushNamed(context, 'login_screen');
         }
