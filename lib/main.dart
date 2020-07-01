@@ -1,4 +1,5 @@
 import 'package:VisaPay/screens/card_screen.dart';
+import 'package:VisaPay/screens/customerMerchant.dart';
 import 'package:VisaPay/screens/merchant/merchant_screen.dart';
 import 'package:VisaPay/screens/merchant/link_screen.dart';
 import 'package:VisaPay/screens/merchant/qrcode_screen.dart';
@@ -28,6 +29,7 @@ class FlashChat extends StatelessWidget {
       initialRoute: 'root_screen',
       routes: {
         'root_screen': (context) => IntroScreen(),
+        'customerMerchant': (context) => OptionScreen(),
         'login_screen': (context) => LoginScreen(),
         'registration_screen': (context) => RegistrationScreen(),
         'merchant_screen': (context) => MerchantScreen(),

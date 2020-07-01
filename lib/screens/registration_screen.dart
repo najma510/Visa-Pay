@@ -163,7 +163,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             });
 
                             Navigator.popAndPushNamed(
-                                context, 'merchant_screen');
+                                context, 'customerMerchant');
                           }
                         } catch (e) {
                           errorMessage();

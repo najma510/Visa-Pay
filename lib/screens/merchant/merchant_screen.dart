@@ -1,4 +1,3 @@
-import 'package:VisaPay/components/alertDialog.dart';
 import 'package:VisaPay/components/rounded_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +17,7 @@ class _MerchantScreenState extends State<MerchantScreen> {
   String messageText;
   String email = ' ';
   String name = ' ';
+  int pageId = 0;
 
   @override
   void initState() {
@@ -42,15 +42,6 @@ class _MerchantScreenState extends State<MerchantScreen> {
     } catch (e) {
       print(e);
     }
-  }
-
-  Future<bool> onBackPressed() {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alertDialog(context);
-      },
-    );
   }
 
   @override
@@ -94,70 +85,67 @@ class _MerchantScreenState extends State<MerchantScreen> {
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
           },
-          child: WillPopScope(
-            onWillPop: onBackPressed,
-            child: Padding(
-              padding: EdgeInsets.only(left: 24, right: 24, top: 10),
-              child: ListView(
-                children: [
-                  Container(
-                    height: 100.0,
-                    child: Image.asset('images/visa.png'),
+          child: Padding(
+            padding: EdgeInsets.only(left: 24, right: 24, top: 10),
+            child: ListView(
+              children: [
+                Container(
+                  height: 100.0,
+                  child: Image.asset('images/visa.png'),
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                CircularProfileAvatar(
+                  '',
+                  child: Image.asset('images/pro.png'),
+                  borderWidth: 5,
+                  elevation: 2,
+                  radius: 80,
+                ),
+                Text(
+                  name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 35,
+                    fontFamily: "Signatra",
                   ),
-                  SizedBox(
-                    height: 100,
+                ),
+                Text(
+                  email,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey[500],
+                    fontSize: 14,
+                    fontFamily: 'Montserrat',
                   ),
-                  CircularProfileAvatar(
-                    '',
-                    child: Image.asset('images/pro.png'),
-                    borderWidth: 5,
-                    elevation: 2,
-                    radius: 80,
-                  ),
-                  Text(
-                    name,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 35,
-                      fontFamily: "Signatra",
-                    ),
-                  ),
-                  Text(
-                    email,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: 14,
-                      fontFamily: 'Montserrat',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40.0,
-                  ),
-                  RoundedButton(
-                    title: 'Generate Shareable Payment Link',
-                    colour: Colors.blueAccent,
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'link_screen');
-                    },
-                  ),
-                  RoundedButton(
-                    title: 'View Transaction History',
-                    colour: Colors.blueAccent,
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'transaction_screen');
-                    },
-                  ),
-                  RoundedButton(
-                    title: 'View/Edit Card Details',
-                    colour: Colors.blueAccent,
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'card_screen');
-                    },
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+                RoundedButton(
+                  title: 'Generate Shareable Payment Link',
+                  colour: Colors.blueAccent,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'link_screen');
+                  },
+                ),
+                RoundedButton(
+                  title: 'View Transaction History',
+                  colour: Colors.blueAccent,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'transaction_screen');
+                  },
+                ),
+                RoundedButton(
+                  title: 'View/Edit Card Details',
+                  colour: Colors.blueAccent,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'card_screen');
+                  },
+                ),
+              ],
             ),
           ),
         ),

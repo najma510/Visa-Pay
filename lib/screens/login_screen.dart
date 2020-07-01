@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             onWillPop: onBackPressed,
             child: Padding(
               padding: EdgeInsets.only(
-                top: 100,
+                top: 120,
                 left: 20,
                 right: 20,
               ),
@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
                         if (user != null) {
-                          Navigator.popAndPushNamed(context, 'merchant_screen');
+                          Navigator.popAndPushNamed(context, 'customerMerchant');
                         }
                       } catch (e) {
                         setState(() {
@@ -160,47 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         elevation: 7.0,
                         child: Center(
                           child: Text(
-                            'Login As Merchant',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  GestureDetector(
-                    onTap: () async {
-                      FocusScope.of(context).requestFocus(new FocusNode());
-                      setState(() {
-                        showSpinner = true;
-                      });
-                      try {
-                        final user = await _auth.signInWithEmailAndPassword(
-                            email: email, password: password);
-                        if (user != null) {
-                          Navigator.popAndPushNamed(context, 'consumer_screen');
-                        }
-                      } catch (e) {
-                        setState(() {
-                          showSpinner = false;
-                        });
-                        errorMessage("Something went wrong. Please try again.");
-                      }
-                    },
-                    child: Container(
-                      height: 40.0,
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        shadowColor: Colors.blueAccent,
-                        color: Colors.blue,
-                        elevation: 7.0,
-                        child: Center(
-                          child: Text(
-                            'Login As Consumer',
+                            'Login',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

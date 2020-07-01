@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:VisaPay/components/alertDialog.dart';
-import 'package:VisaPay/components/rounded_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:VisaPay/components/constants.dart';
 import 'package:rich_alert/rich_alert.dart';
 
 FirebaseUser loggedInUser;
