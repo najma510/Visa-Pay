@@ -23,6 +23,6 @@ flutter run
 
 ## For Visa Pay Web Service
 
-1) Create a fat jar out of Spring Boot Application (VisaPaymentRESTService folder) using ```bash mvn clean install```. An embedded Tomcat Server is also built-in.
+1) Create a fat jar out of Spring Boot Application (VisaPaymentRESTService folder) using ``` mvn clean install```. An embedded Tomcat Server is also built-in.
 2) If you wish to deploy the application as WAR, change the packaging property inside pom.xml to war.
-3) Run the jar file using ```bash java -jar <artifact-name>```
+3) Run the jar file using ``` java -jar <artifact-name>```
