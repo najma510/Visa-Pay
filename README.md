@@ -11,7 +11,7 @@ VisaPay is a flutter payment app with features like generating links and QR code
 git clone https://github.com/mikal09/Visa-Pay
 ```
 2) Navigate to the project directory Visa-Pay
-3) Install the required tools and packages in requirements.txt
+3) Install the required flutter extension and packages in VS Code or Android studio.
 
 
 ## For Visa Pay Mobile Application
