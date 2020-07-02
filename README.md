@@ -1,16 +1,28 @@
 # VisaPay
 
+VisaPay is a flutter payment app with features like generating links and QR code for payments.
 
-**For Visa Pay Mobile Application**
 
-* Download this repository.
-* Open it in Android studio or vs code.
-* Get flutter extensions and packages.
-* Start emulator or run on real device.
+### Installation:
 
-**For Visa Pay Web Service**
+1)  Clone this repository
 
-* Create a fat jar out of Spring Boot Application (VisaPaymentRESTService folder) using 
-  `mvn clean install`. An embedded Tomcat Server is also built-in.
-* If you wish to deploy the application as WAR, change the packaging property inside **pom.xml** to war.
-* Run the jar file using `java -jar <artifact-name>`
+```bash
+git clone https://github.com/mikal09/Visa-Pay
+```
+2) Navigate to the project directory Visa-Pay
+3) Install the required tools and packages in requirements.txt
+
+
+## For Visa Pay Mobile Application
+
+#### To Run:
+```bash
+flutter run
+```
+
+## For Visa Pay Web Service
+
+1) Create a fat jar out of Spring Boot Application (VisaPaymentRESTService folder) using ``` mvn clean install```. An embedded Tomcat Server is also built-in.
+2) If you wish to deploy the application as WAR, change the packaging property inside pom.xml to war.
+3) Run the jar file using ``` java -jar <artifact-name>```
