@@ -29,5 +29,6 @@ Launch Emulator or run on real device
 1) Create a fat jar out of Spring Boot Application (VisaPaymentRESTService folder only) using ``` mvn clean install```. An embedded Tomcat Server is also built-in.
 2) If you wish to deploy the application as WAR, change the packaging property inside pom.xml to war.
 3) Run the jar file
-```bash java -jar <artifact-name>
+```bash 
+java -jar <artifact-name>
 ```
