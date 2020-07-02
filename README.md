@@ -23,6 +23,7 @@ git clone https://github.com/mikal09/Visa-Pay
 
 ## For Visa Pay Web Service
 
+#### To Run:
 1) Navigate to the project directory Visa-Pay
 1) Create a fat jar out of Spring Boot Application (VisaPaymentRESTService folder only) using ``` mvn clean install```. An embedded Tomcat Server is also built-in.
 2) If you wish to deploy the application as WAR, change the packaging property inside pom.xml to war.
