@@ -5,8 +5,7 @@ VisaPay is a flutter payment app with features like generating links and QR code
 
 ### Installation:
 
-1) Install and setup flutter using [Install flutter](https://flutter.dev/docs/get-started/install).
-2)  Clone this repository
+Clone this repository
 
 ```bash
 git clone https://github.com/mikal09/Visa-Pay
@@ -15,11 +14,12 @@ git clone https://github.com/mikal09/Visa-Pay
 ## For Visa Pay Mobile Application
 
 #### To Run:
-1) Navigate to the project directory Visa-Pay
-2) Remove the folder VisaPaymentRESTService folder
-3) Install the required flutter extension and packages in VS Code or Android studio.
-4) Launch Emulator or run on real device
-5) Run the app from terminal using ```flutter run```.
+1) Install and setup flutter using [Install flutter](https://flutter.dev/docs/get-started/install).
+2) Navigate to the project directory Visa-Pay
+3) Remove the folder VisaPaymentRESTService folder
+4) Install the required flutter extension and packages in VS Code or Android studio.
+5) Launch Emulator or run on real device
+6) Run the app from terminal using ```flutter run```.
 
 ## For Visa Pay Web Service
 
