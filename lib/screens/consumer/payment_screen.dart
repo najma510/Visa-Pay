@@ -106,7 +106,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('MERCHANT:   McDonulds',
+                    Text('MERCHANT:   McDonalds',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         )),
